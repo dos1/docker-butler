@@ -1,10 +1,10 @@
 FROM debian
 MAINTAINER Sebastian Krzyszkowiak <dos@dosowisko.net>
 
-RUN apt-get update && apt-get -y install ca-certificates
+RUN apt-get update && apt-get -y install ca-certificates unzip
 
-ADD https://dl.itch.ovh/butler/linux-amd64/head/butler /usr/bin/
+ADD https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default /usr/local/bin/butler.zip
 
-RUN chmod +x /usr/bin/butler
+RUN cd /usr/local/bin && unzip butler.zip && rm butler.zip
 
-CMD ["/usr/bin/butler"]
+CMD ["/usr/local/bin/butler"]
